@@ -3,7 +3,7 @@
 &emsp;&emsp;在《编译原理》课程的学习下，逐渐的掌握一个编译器的结构、作用和实现方法。同时，希望自己在不断的努力下写出一个简单的C语言编译器。
 
 
-###主要功能
+### 主要功能
 
 1. 支持`一元运算符`（++，--，!，-），其中++和--有前缀和后缀两种功能
 2. 支持`逻辑运算符`：||和&&
@@ -13,9 +13,9 @@
 6. 支持`判断语句`if
 7. `赋值`操作及`数组`的部分操作
 
-###上下文无关文法
+### 上下文无关文法
 
-####一、基本框架
+#### 一、基本框架
 
 
 
@@ -30,7 +30,7 @@ Stmts -> Stmts Stmt | ε
 
 
 
-####二、标识符和常数
+#### 二、标识符和常数
 
 Letter -> A | B | C | D | E | F | G | H | I | J | K | L | M | N 
 &emsp;&emsp;| O | P | Q | R | S | T | U | V | W | X | Y | Z | a | b
@@ -42,7 +42,7 @@ Num -> Num Digit | Non_digit
 Identifier -> Identifier Digit | Identifier Letter | Letter
 Bool\_value -> true | false
 
-####三、运算符
+#### 三、运算符
 
 Unary\_op -> ! | - | ++ | --
 Self\_op -> ++ | --
@@ -51,7 +51,7 @@ Math\_op -> + | - | * | / | %
 Judge\_op -> == | != | >= | <= | > | <
 
 
-####四、语句块框架
+#### 四、语句块框架
 
 Stmt -> Assignment
 &emsp;&emsp;| if (Bool) Stmt
@@ -70,14 +70,14 @@ Forc -> Assignment | ε
 
 
 
-####五、赋值语句
+#### 五、赋值语句
 
 
 Numlist -> Numlist,Num | Num
 Rightside -> Bool | { Numlist } 
 Assignment -> Array = Rightside ; | Array Self\_op ; | Self\_op Array ; 
 
-####六、条件语句
+#### 六、条件语句
 
 Factor -> (Bool) | Array | Num | Bool\_value
 Term -> Unary\_op Factor | Factor Self\_op | Factor
