@@ -17,104 +17,66 @@
 
 #### 一、基本框架
 
-
-
-Program -> Type main() Block
-
-Type -> int | float | bool
-
-Block -> { Decls Stmts  }
-
-Decls -> Decls Decl | ε
-
-Decl -> Type Array ;
-
-Array -> Array[ Num ] | Identifier
-
-Stmts -> Stmts Stmt | ε
+    Program -> Type main() Block
+    Type -> int | float | bool
+    Block -> { Decls Stmts  }
+    Decls -> Decls Decl | ε
+    Decl -> Type Array ;
+    Array -> Array[ Num ] | Identifier
+    Stmts -> Stmts Stmt | ε
 
 
 
 
 #### 二、标识符和常数
 
-Letter -> A | B | C | D | E | F | G | H | I | J | K | L | M | N 
-
-&emsp;&emsp;| O | P | Q | R | S | T | U | V | W | X | Y | Z | a | b
-
-&emsp;&emsp;| c | d | e | f | g | h | i | j | k | l | m | n | o | p
-
-&emsp;&emsp;| q | r | s | t | u | v | w | x | y | z | _
-
-Digit -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-
-Non_digit -> 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-
-Num -> Num Digit | Non_digit
-
-Identifier -> Identifier Digit | Identifier Letter | Letter
-
-Bool\_value -> true | false
+    Letter -> A | B | C | D | E | F | G | H | I | J | K | L | M | N 
+        | O | P | Q | R | S | T | U | V | W | X | Y | Z | a | b
+        | c | d | e | f | g | h | i | j | k | l | m | n | o | p
+        | q | r | s | t | u | v | w | x | y | z | _
+    Digit -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+    Non_digit -> 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+    Num -> Num Digit | Non_digit
+    Identifier -> Identifier Digit | Identifier Letter | Letter
+    Bool_value -> true | false
 
 #### 三、运算符
 
-Unary\_op -> ! | - | ++ | --
-
-Self\_op -> ++ | --
-
-Logic\_op -> || | &&
-
-Math\_op -> + | - | * | / | %
-
-Judge\_op -> == | != | >= | <= | > | <
+    Unary_op -> ! | - | ++ | --
+    Self_op -> ++ | --
+    Logic_op -> || | &&
+    Math_op -> + | - | * | / | %
+    Judge_op -> == | != | >= | <= | > | <
 
 
 #### 四、语句块框架
 
-Stmt -> Assignment
-
-&emsp;&emsp;| if (Bool) Stmt
-
-&emsp;&emsp;| if (Bool) Stmt else Stmt
-
-&emsp;&emsp;| while (Bool) Stmt
-
-&emsp;&emsp;| do Stmt while (Bool) ;
-
-&emsp;&emsp;| for ( Fora ; Forb ; Forc ) Stmt
-
-&emsp;&emsp;| Break ;
-
-&emsp;&emsp;| Block
-
-
-
-Fora -> Assignment | ε
-
-Forb -> Bool | ε
-
-Forc -> Assignment | ε
+    Stmt -> Assignment
+        | if (Bool) Stmt
+        | if (Bool) Stmt else Stmt
+        | while (Bool) Stmt
+        | do Stmt while (Bool) ;
+        | for ( Fora ; Forb ; Forc ) Stmt
+        | Break ;
+        | Block
+    Fora -> Assignment | ε
+    Forb -> Bool | ε
+    Forc -> Assignment | ε
 
 
 
 #### 五、赋值语句
 
 
-Numlist -> Numlist,Num | Num
-
-Rightside -> Bool | { Numlist } 
-
-Assignment -> Array = Rightside ; | Array Self\_op ; | Self\_op Array ; 
+    Numlist -> Numlist,Num | Num
+    Rightside -> Bool | { Numlist } 
+    Assignment -> Array = Rightside ; | Array Self_op ; | Self_op Array ; 
 
 #### 六、条件语句
 
-Factor -> (Bool) | Array | Num | Bool\_value
-
-Term -> Unary\_op Factor | Factor Self\_op | Factor
-
-Expr -> Expr Math\_op Term | Term
-
-Rel -> Rel Judge\_op Expr | Expr
-
-Bool -> Bool Logic\_op Rel | Rel
+    Factor -> (Bool) | Array | Num | Bool_value
+    Term -> Unary_op Factor | Factor Self_op | Factor
+    Expr -> Expr Math_op Term | Term
+    Rel -> Rel Judge_op Expr | Expr
+    Bool -> Bool Logic_op Rel | Rel
 
