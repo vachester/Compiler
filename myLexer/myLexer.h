@@ -12,50 +12,6 @@
  * 声明了词法分析类
  */
 
-/*
-//字符类
-class Token {
-	public:
-		Token() = default;
-		Token(int t) : tag(t) {};
-		int getTag() { return tag; };
-	private:
-		int tag;
-};
-
-//整数类
-class Num : public Token {
-	public:
-		Num() = default;
-		Num(int v) : Token(Tag::NUM), value(v) {};
-		int getValue() { return value; };
-	private:
-		int value;
-};
-
-//浮点数类
-class Floating : public Token {
-	public:
-		Floating() = default;
-		Floating(float v) : Token(Tag::FLOATING), value(v) {};
-		float getValue() { return value; };
-	private:
-		float value;
-};
-
-
-//布尔常数类
-class Boolvalue : public Token {
-	public:
-		Boolvalue() = default;
-		Boolvalue(bool v) : Token(Tag::BOOLVALUE), value(v) {};
-		bool getValue() { return value; };
-	private:
-		bool value;
-};
-
-
-*/
 //存储词法单元
 class Word {
 	public:

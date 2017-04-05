@@ -68,9 +68,7 @@
 #### 五、赋值语句
 
 
-    Numlist -> Numlist,Num | Num
-    Rightside -> Bool | { Numlist } 
-    Assignment -> Array = Rightside ; | Array Self_op ; | Self_op Array ; 
+    Assignment -> Array = Bool ; | Array Self_op ; | Self_op Array ; 
 
 #### 六、条件语句
 
