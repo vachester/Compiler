@@ -47,7 +47,7 @@ class GetTable {
 		void judge_first(std::vector<std::string> s , std::unordered_set<std::string> & result); //判断串s的first集合是否包含ε
 		void get_closure(Status &p); //求项目闭包
 		bool judge_repeat(Status s1, Status s2); //判断两个状态是否重复
-		bool judge_conflict(Status & s); //判断一个状态是否有移进-归约冲突
+		bool judge_conflict(Status & s, std::unordered_set<std::string> &result); //判断一个状态是否有移进-归约冲突
 		void get_status(); //获得状态集合
 		void print(std::ofstream &o1, std::ofstream &o2); //打印归约产生式子
 	private:

@@ -8,6 +8,7 @@ Decl -> Type Array ; #
 Stmts -> Stmts Stmt #
 Stmts -> Stmt #
 Array -> Array [ Num ] #
+Array -> Array [ Array ] #
 Array -> Identifier #
 Bool_value -> true #
 Bool_value -> false #
@@ -54,5 +55,5 @@ Stmt -> Assignment ; #
 Stmt -> while ( Bool ) Stmt #
 Stmt -> for ( Assignment ; Bool ; Assignment ) Stmt #
 Stmt -> break ; #
-Stmt -> Block #
 Stmt -> { Stmts } #
+Stmt -> { Decls Stmts } #

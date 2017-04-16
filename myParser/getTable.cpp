@@ -247,7 +247,8 @@ bool GetTable::judge_repeat(Status s1, Status s2) {
 }
 
 
-bool GetTable::judge_conflict(Status & s) {
+bool GetTable::judge_conflict(Status & s, std::unordered_set<std::string> &result) {
+	bool flag = false;
 	std::unordered_set<std::string> tmp;
 	for(auto pro : s) {
 		if(pro.dot_position == static_cast<int>(G[pro.pro_num].right.size())) 
@@ -257,12 +258,14 @@ bool GetTable::judge_conflict(Status & s) {
 	for(auto pro : s) {
 		if(pro.dot_position < static_cast<int>(G[pro.pro_num].right.size())) {
 			std::string next = G[pro.pro_num].right[pro.dot_position];
-			if(tmp.find(next) != tmp.end())
-				return true;
+			if(tmp.find(next) != tmp.end()) {
+				result.insert(next);
+				flag = true;
+			}
 		}
 	}
 
-	return false;
+	return flag;
 
 }
 	
@@ -284,6 +287,7 @@ void GetTable::get_status() {
 	bool change = true;
 	std::unordered_set<int> record; //记录已经求过的状态
 	std::unordered_map<int, Status> sstmp;
+	std::unordered_set<std::string> conflict;
 
 	while(change) {
 		change = false;
@@ -293,6 +297,7 @@ void GetTable::get_status() {
 			if(record.find(sta.first) != record.end()) 
 				continue;
 			record.insert(sta.first);
+			//judge_conflict(sta.second,conflict);
 			/*
 			 * 开始球状态转移，用一个set<string>记录被转移过的状态
 			 */
@@ -348,7 +353,6 @@ void GetTable::get_status() {
 	//添加acc
 	action[goTo[0]["Program"]]["#"] = "acc";
 
-	//std::cout << statuses.size();
 }
 
 
