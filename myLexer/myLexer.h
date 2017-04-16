@@ -32,6 +32,7 @@ class Lexer {
 		bool readnext(char c, std::ifstream &in);
 		Word scan(std::ifstream &in);
 		int getLine() { return line; }
+		void run(); //执行
 	private:
 		char peek;
 		std::unordered_map<std::string, Word> words;

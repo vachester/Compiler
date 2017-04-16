@@ -1,5 +1,58 @@
-S -> L = R #
-S -> R #
-L -> * R #
-L -> i #
-R -> L #
+Program -> Type main ( ) Block #
+Type -> int #
+Type -> bool #
+Block -> { Decls Stmts return Num ; } #
+Decls -> Decls Decl #
+Decls -> Decl #
+Decl -> Type Array ; #
+Stmts -> Stmts Stmt #
+Stmts -> Stmt #
+Array -> Array [ Num ] #
+Array -> Identifier #
+Bool_value -> true #
+Bool_value -> false #
+Assignment -> Array = Bool #
+Assignment -> Array Self_op #
+assignment -> Self_op Array #
+Bool -> Bool Logic_op Rel #
+Bool -> Rel #
+Rel -> Rel Judge_op LExpr #
+Rel -> LExpr #
+LExpr -> LExpr LMath_op HExpr #
+LExpr -> HExpr #
+HExpr -> HExpr HMath_op Term #
+HExpr -> Term #
+Term -> Unary_op Factor #
+Term -> Factor Self_op #
+Term -> Factor #
+Factor -> ( Bool ) #
+Factor -> Array #
+Factor -> Num #
+Factor -> Bool_value #
+Unary_op -> ! #
+Unary_op -> - #
+Unary_op -> ++ #
+Unary_op -> -- #
+Self_op -> ++ #
+Self_op -> -- #
+Logic_op -> || #
+Logic_op -> && #
+LMath_op -> + #
+LMath_op -> - #
+HMath_op -> * #
+HMath_op -> / #
+HMath_op -> % #
+Judge_op -> == #
+Judge_op -> != #
+Judge_op -> >= #
+Judge_op -> <= #
+Judge_op -> > #
+Judge_op -> < #
+Stmt -> if ( Bool ) Stmt #
+Stmt  -> if ( Bool ) Stmt else Stmt #
+Stmt -> Assignment ; #
+Stmt -> while ( Bool ) Stmt #
+Stmt -> for ( Assignment ; Bool ; Assignment ) Stmt #
+Stmt -> break ; #
+Stmt -> Block #
+Stmt -> { Stmts } #

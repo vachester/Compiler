@@ -1,0 +1,108 @@
+Type -> int
+Type -> int
+Array -> Identifier
+Decl -> Type Array ;
+Decls -> Decl
+Type -> int
+Array -> Identifier
+Decl -> Type Array ;
+Decls -> Decls Decl
+Array -> Identifier
+Factor -> Num
+Term -> Factor
+HExpr -> Term
+LExpr -> HExpr
+Rel -> LExpr
+Bool -> Rel
+Assignment -> Array = Bool
+Stmt -> Assignment ;
+Stmts -> Stmt
+Array -> Identifier
+Factor -> Num
+Term -> Factor
+HExpr -> Term
+LExpr -> HExpr
+Rel -> LExpr
+Bool -> Rel
+Assignment -> Array = Bool
+Array -> Identifier
+Factor -> Array
+Term -> Factor
+HExpr -> Term
+LExpr -> HExpr
+Rel -> LExpr
+Judge_op -> <
+Factor -> Num
+Term -> Factor
+HExpr -> Term
+LExpr -> HExpr
+Rel -> Rel Judge_op LExpr
+Bool -> Rel
+Array -> Identifier
+Self_op -> ++
+Assignment -> Array Self_op
+Array -> Identifier
+Array -> Identifier
+Factor -> Array
+Term -> Factor
+HExpr -> Term
+HMath_op -> *
+Array -> Identifier
+Factor -> Array
+Term -> Factor
+HExpr -> HExpr HMath_op Term
+LExpr -> HExpr
+LMath_op -> +
+Array -> Identifier
+Factor -> Array
+Term -> Factor
+HExpr -> Term
+LExpr -> LExpr LMath_op HExpr
+Rel -> LExpr
+Bool -> Rel
+Assignment -> Array = Bool
+Stmt -> Assignment ;
+Stmts -> Stmt
+Array -> Identifier
+Factor -> Array
+Term -> Factor
+HExpr -> Term
+LExpr -> HExpr
+Rel -> LExpr
+Judge_op -> ==
+Factor -> Num
+Term -> Factor
+HExpr -> Term
+LExpr -> HExpr
+Rel -> Rel Judge_op LExpr
+Bool -> Rel
+Stmt -> break ;
+Stmt -> break ;
+Stmt -> if ( Bool ) Stmt else Stmt
+Stmts -> Stmts Stmt
+Stmt -> { Stmts }
+Stmt -> for ( Assignment ; Bool ; Assignment ) Stmt
+Stmts -> Stmts Stmt
+Array -> Identifier
+Factor -> Array
+Term -> Factor
+HExpr -> Term
+LExpr -> HExpr
+Rel -> LExpr
+Judge_op -> !=
+Factor -> Num
+Term -> Factor
+HExpr -> Term
+LExpr -> HExpr
+Rel -> Rel Judge_op LExpr
+Bool -> Rel
+Array -> Identifier
+Self_op -> ++
+Assignment -> Array Self_op
+Stmt -> Assignment ;
+Stmts -> Stmt
+Stmt -> { Stmts }
+Stmt -> while ( Bool ) Stmt
+Stmts -> Stmts Stmt
+Block -> { Decls Stmts return Num ; }
+Program -> Type main ( ) Block

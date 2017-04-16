@@ -5,8 +5,8 @@ namespace Tag {
 	//保留字
 	const int
 		INT = 1, BOOL = 2, MAIN = 3, IF = 4,
-		ELSE = 5, FOR = 6, WHILE = 7, DO = 8,
-		BREAK = 9, RETURN = 10, TRUE = 11, FALSE = 12;	
+		ELSE = 5, FOR = 6, WHILE = 7, FALSE = 8,
+		BREAK = 9, RETURN = 10, TRUE = 11 ;	
 
 	//运算符
 	const int
