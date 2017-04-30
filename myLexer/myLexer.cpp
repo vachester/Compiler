@@ -24,7 +24,6 @@ Lexer::Lexer() {
 	peek = ' ';
 	line = 1;
 
-	run();
 }
 
 //方便处理像>=,++等这些两个字符连在一起的运算符
@@ -162,26 +161,3 @@ Word Lexer::scan(std::ifstream &in) {
 }
 
 
-void Lexer::run() {
-	std::ifstream in("/root/C++/Compiler/test.c");
-	std::ofstream out("/root/C++/Compiler/lexer.out");
-
-	in >> std::noskipws;
-
-	Word w;
-	w = scan(in);
-	while(!in.eof() && w.getTag() != Tag::ERROR) {
-		out << line << " ";
-		if(w.getTag() == 50)
-			out << "Num" << std::endl;
-		else if(w.getTag() == 60)
-			out << "Identifier" << std::endl;
-		else
-			out << w.getLexeme() << std::endl;
-		w = scan(in);
-	}
-
-	if(w.getTag() == Tag::ERROR)
-		std::cout << "ERROR!" << std::endl;
-
-}

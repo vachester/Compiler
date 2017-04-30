@@ -19,6 +19,8 @@ class Word {
 		Word(std::string s, int t) : lexeme(s), tag(t) {};
 		std::string getLexeme() { return lexeme; };
 		int getTag() { return tag; }
+		void setTag(int t) { tag = t; }
+		void setLexeme(std::string s) { lexeme = s; }
 	private:
 		std::string lexeme;
 		int tag;
@@ -32,7 +34,6 @@ class Lexer {
 		bool readnext(char c, std::ifstream &in);
 		Word scan(std::ifstream &in);
 		int getLine() { return line; }
-		void run(); //执行
 	private:
 		char peek;
 		std::unordered_map<std::string, Word> words;

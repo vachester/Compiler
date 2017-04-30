@@ -30,9 +30,9 @@ bool eq(const Project &p1, const Project &p2) {
 
 GetTable::GetTable(){
 	//初始化非终结符和终结符
-	V = {"S","Program","Type","Block","Decls","Stmts","Decl","Stmt","Assignment","Bool", "Rel", "LExpr","HExpr","Term","Factor","Unary_op","Self_op","Logic_op","HMath_op","LMath_op","Judge_op","Bool_value","Array"};
+	V = {"S","Program","Type","Block","Stmts","Decl","Stmt","ForAssignment","Assignment","Bool", "Rel", "LExpr","HExpr","Factor","Self_op","HLogic_op","LLogic_op","HMath_op","LMath_op","Judge_op","Bool_value","Array","Fora","Forb","Forc","HRel","LArray","M","N"};
 
-	T = {"(" ,")","main","int","bool","return",";","{","}","if","else","while","for","break","Identifier","Num","[","]","true","false","==","!=",">=","<=",">","<","+","-","*","/","%","||","&&","++","--","!","-",";","="};
+	T = {"(" ,")","main","int","bool","return",";","{","}","if","else","while","for","Identifier","Num","[","]","true","false","==","!=",">=","<=",">","<","+","-","*","/","%","||","&&","++","--","!","-",";","=","ε"};
 
 	std::unordered_set<std::string> empty_set;
 	std::unordered_set<int> empty_set_int;
@@ -303,9 +303,11 @@ void GetTable::get_status() {
 			 */
 			std::unordered_set<std::string> record_status;
 			for(auto pros : sta.second) {
-				if(pros.dot_position == static_cast<int>(G[pros.pro_num].right.size())) {
-					for(auto sucess : pros.successors)  
+				if(G[pros.pro_num].right[0] == "ε" || pros.dot_position == static_cast<int>(G[pros.pro_num].right.size())) {
+					for(auto sucess : pros.successors) {  
+						if(action[sta.first].find(sucess) == action[sta.first].end())
 						action[sta.first][sucess] = "r" + std::to_string(pros.pro_num);
+					}
 					continue;
 				}
 				std::string trans = G[pros.pro_num].right[pros.dot_position];

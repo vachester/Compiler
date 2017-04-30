@@ -1,0 +1,16 @@
+int main() {
+	int i;
+	int A[3];
+	for(i = 0;i < 3;i++) {
+		A[i] = i*(2+i);
+		while(i > 0) {
+			int j;
+			j = A[i];
+			if(j == 3 && i == 2)
+				--j;
+			else
+				j++;
+		}
+	}
+	return 0;
+}

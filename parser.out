@@ -1,188 +1,22 @@
-Type -> int
-Type -> int
-Array -> Identifier
-Decl -> Type Array ;
-Decls -> Decl
-Type -> int
-Array -> Identifier
-Array -> Array [ Num ]
-Decl -> Type Array ;
-Decls -> Decls Decl
-Type -> bool
-Array -> Identifier
-Decl -> Type Array ;
-Decls -> Decls Decl
-Array -> Identifier
-Factor -> Num
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-Rel -> LExpr
-Bool -> Rel
-Assignment -> Array = Bool
-Array -> Identifier
-Factor -> Array
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-Rel -> LExpr
-Judge_op -> <
-Factor -> Num
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-Rel -> Rel Judge_op LExpr
-Bool -> Rel
-Array -> Identifier
-Self_op -> ++
-Assignment -> Array Self_op
-Type -> int
-Array -> Identifier
-Decl -> Type Array ;
-Decls -> Decl
-Array -> Identifier
-Array -> Identifier
-Factor -> Array
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-LMath_op -> +
-Factor -> Num
-Term -> Factor
-HExpr -> Term
-HMath_op -> *
-Factor -> Num
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-LMath_op -> -
-Array -> Identifier
-Factor -> Array
-Term -> Factor
-HExpr -> Term
-LExpr -> LExpr LMath_op HExpr
-Rel -> LExpr
-Bool -> Rel
-Factor -> ( Bool )
-Term -> Factor
-HExpr -> HExpr HMath_op Term
-LExpr -> LExpr LMath_op HExpr
-Rel -> LExpr
-Bool -> Rel
-Assignment -> Array = Bool
-Stmt -> Assignment ;
-Stmts -> Stmt
-Array -> Identifier
-Array -> Identifier
-Array -> Array [ Array ]
-Array -> Identifier
-Factor -> Array
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-Rel -> LExpr
-Bool -> Rel
-Assignment -> Array = Bool
-Stmt -> Assignment ;
-Stmts -> Stmts Stmt
-Stmt -> { Decls Stmts }
-Stmt -> for ( Assignment ; Bool ; Assignment ) Stmt
-Stmts -> Stmt
-Array -> Identifier
-Bool_value -> true
-Factor -> Bool_value
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-Rel -> LExpr
-Bool -> Rel
-Assignment -> Array = Bool
-Stmt -> Assignment ;
-Stmts -> Stmts Stmt
-Array -> Identifier
-Factor -> Array
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-Rel -> LExpr
-Bool -> Rel
-Array -> Identifier
-Array -> Array [ Num ]
-Array -> Identifier
-Array -> Array [ Num ]
-Factor -> Array
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-Rel -> LExpr
-Bool -> Rel
-Assignment -> Array = Bool
-Stmt -> Assignment ;
-Stmts -> Stmt
-Array -> Identifier
-Array -> Array [ Num ]
-Array -> Identifier
-Array -> Array [ Num ]
-Factor -> Array
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-Rel -> LExpr
-Bool -> Rel
-Assignment -> Array = Bool
-Stmt -> Assignment ;
-Stmts -> Stmts Stmt
-Stmt -> { Stmts }
-Stmt -> while ( Bool ) Stmt
-Stmts -> Stmts Stmt
-Array -> Identifier
-Array -> Array [ Num ]
-Factor -> Array
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-Rel -> LExpr
-Judge_op -> >
-Factor -> Num
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-Rel -> Rel Judge_op LExpr
-Bool -> Rel
-Logic_op -> &&
-Array -> Identifier
-Array -> Array [ Num ]
-Factor -> Array
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-Rel -> LExpr
-Judge_op -> <
-Factor -> Num
-Term -> Factor
-HExpr -> Term
-LExpr -> HExpr
-Rel -> Rel Judge_op LExpr
-Bool -> Bool Logic_op Rel
-Array -> Identifier
-Array -> Array [ Num ]
-Self_op -> ++
-Assignment -> Array Self_op
-Stmt -> Assignment ;
-Array -> Identifier
-Array -> Array [ Num ]
-Self_op -> --
-Assignment -> Array Self_op
-Stmt -> Assignment ;
-Stmts -> Stmt
-Array -> Identifier
-Array -> Array [ Num ]
-Self_op -> ++
-Assignment -> Array Self_op
-Stmt -> Assignment ;
-Stmts -> Stmts Stmt
-Stmt -> { Stmts }
-Stmt -> if ( Bool ) Stmt else Stmt
-Stmts -> Stmts Stmt
-Block -> { Decls Stmts return Num ; }
-Program -> Type main ( ) Block
+0 : i = 0
+1 : if i < 3 goto 3
+2 : goto 22
+3 : t0 = 4
+4 : t1 = 2 + i
+5 : t2 = i * t1
+6 : t0[i] = t2
+7 : if i > 0 goto 9
+8 : goto 1
+9 : t3 = 4
+10 : t4 = t3[i]
+11 : j = t4
+12 : if j == 3 goto 14
+13 : goto 18
+14 : if i == 2 goto 16
+15 : goto 18
+16 : j = j - 1
+17 : goto 7
+18 : j = j + 1
+19 : goto 7
+20 : i = i + 1
+21 : goto 1

@@ -22,7 +22,6 @@ struct Grammer {
 	std::vector<std::string> right;
 };	
 
-
 /*
  * hash函数返回哈希值
  * eq则为set提供相等操作

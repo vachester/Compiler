@@ -1,43 +1,37 @@
 Program -> Type main ( ) Block #
 Type -> int #
 Type -> bool #
-Block -> { Decls Stmts return Num ; } #
-Decls -> Decls Decl #
-Decls -> Decl #
+Block -> { Stmts return Num ; } #
 Decl -> Type Array ; #
-Stmts -> Stmts Stmt #
+Stmts -> Stmts M Stmt #
 Stmts -> Stmt #
-Array -> Array [ Num ] #
-Array -> Array [ Array ] #
+Array -> Identifier [ Num ] #
+Array -> Identifier [ Identifier ] #
 Array -> Identifier #
 Bool_value -> true #
 Bool_value -> false #
-Assignment -> Array = Bool #
-Assignment -> Array Self_op #
-assignment -> Self_op Array #
-Bool -> Bool Logic_op Rel #
-Bool -> Rel #
+Assignment -> LArray = Bool #
+Assignment -> LArray Self_op #
+Assignment -> Self_op LArray #
+Bool -> Bool LLogic_op M HRel #
+Bool -> HRel #
+HRel -> HRel HLogic_op M Rel #
+HRel -> Rel #
 Rel -> Rel Judge_op LExpr #
 Rel -> LExpr #
 LExpr -> LExpr LMath_op HExpr #
 LExpr -> HExpr #
-HExpr -> HExpr HMath_op Term #
-HExpr -> Term #
-Term -> Unary_op Factor #
-Term -> Factor Self_op #
-Term -> Factor #
+HExpr -> HExpr HMath_op Factor #
+HExpr -> Factor #
+Factor -> ! ( Bool ) #
 Factor -> ( Bool ) #
 Factor -> Array #
 Factor -> Num #
 Factor -> Bool_value #
-Unary_op -> ! #
-Unary_op -> - #
-Unary_op -> ++ #
-Unary_op -> -- #
 Self_op -> ++ #
 Self_op -> -- #
-Logic_op -> || #
-Logic_op -> && #
+LLogic_op -> || #
+HLogic_op -> && #
 LMath_op -> + #
 LMath_op -> - #
 HMath_op -> * #
@@ -49,11 +43,24 @@ Judge_op -> >= #
 Judge_op -> <= #
 Judge_op -> > #
 Judge_op -> < #
-Stmt -> if ( Bool ) Stmt #
-Stmt  -> if ( Bool ) Stmt else Stmt #
+Stmt -> Decl #
+Stmt -> if ( Bool ) M Stmt #
+Stmt  -> if ( Bool ) M Stmt N else M Stmt #
 Stmt -> Assignment ; #
-Stmt -> while ( Bool ) Stmt #
-Stmt -> for ( Assignment ; Bool ; Assignment ) Stmt #
-Stmt -> break ; #
+Stmt -> while M ( Bool ) M Stmt #
+Stmt -> for ( Fora ; M Forb ; Forc ) M Stmt #
+Forc -> ForAssignment #
+Forc -> ε #
+Forb -> Bool #
+Forb -> ε #
 Stmt -> { Stmts } #
-Stmt -> { Decls Stmts } #
+LArray -> Identifier [ Num ] #
+LArray -> Identifier [ Identifier ] #
+LArray -> Identifier #
+M -> ε # 
+N -> ε # 
+ForAssignment -> LArray = Bool #
+ForAssignment -> LArray Self_op #
+ForAssignment -> Self_op LArray #
+Fora -> Assignment #
+Fora -> ε #
