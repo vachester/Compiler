@@ -9,21 +9,20 @@
 2. 支持`逻辑运算符`：||和&&
 3. 支持`算术运算符`：+，-，*，/，%
 4. 支持`关系运算符`：>，>=，<，<=，==，！=
-5. 控制流：`for`循环，`while`和`do-while`循环
+5. 控制流：`for`循环，`while`循环
 6. 支持`判断语句`if
-7. `赋值`操作及`数组`的部分操作
+7. `赋值`操作及`一维数组`的部分操作
 
 ### 上下文无关文法
 
 #### 一、基本框架
 
     Program -> Type main() Block
-    Type -> int | float | bool
-    Block -> { Decls Stmts  }
-    Decls -> Decls Decl | ε
+    Type -> int | bool
+    Block -> { Stmts return Num ; }
     Decl -> Type Array ;
-    Array -> Array[ Num ] | Identifier
-    Stmts -> Stmts Stmt | ε
+    Array -> Identifier [ Num ] | Identifier [ Identifier ] | Identifier
+    Stmts -> Stmts M Stmt | Stmt
 
 
 
@@ -42,39 +41,47 @@
 
 #### 三、运算符
 
-    Unary_op -> ! | - | ++ | --
     Self_op -> ++ | --
-    Logic_op -> || | &&
-    Math_op -> + | - | * | / | %
+	HLogic_op -> &&
+    LLogic_op -> ||
+	HMath_op -> * | / | %
+    LMath_op -> + | - 
     Judge_op -> == | != | >= | <= | > | <
 
 
 #### 四、语句块框架
 
-    Stmt -> Assignment
-        | if (Bool) Stmt
-        | if (Bool) Stmt else Stmt
-        | while (Bool) Stmt
-        | do Stmt while (Bool) ;
-        | for ( Fora ; Forb ; Forc ) Stmt
-        | Break ;
-        | Block
+    Stmt -> Assignment ;
+		| Decl
+        | if ( Bool ) M Stmt
+        | if ( Bool ) M Stmt N else M Stmt
+        | while M ( Bool ) M Stmt
+        | for ( Fora ; M Forb ; Forc ) M Stmt
+        | { Stmts }
     Fora -> Assignment | ε
     Forb -> Bool | ε
-    Forc -> Assignment | ε
-
+    Forc -> ForAssignment | ε
 
 
 #### 五、赋值语句
 
 
-    Assignment -> Array = Bool ; | Array Self_op ; | Self_op Array ; 
+    Assignment -> LArray = Bool ; | LArray Self_op ; | Self_op LArray ; 
+
+    ForAssignment -> LArray = Bool ; | LArray Self_op ; | Self_op LArray ; 
 
 #### 六、条件语句
 
-    Factor -> (Bool) | Array | Num | Bool_value
-    Term -> Unary_op Factor | Factor Self_op | Factor
-    Expr -> Expr Math_op Term | Term
-    Rel -> Rel Judge_op Expr | Expr
-    Bool -> Bool Logic_op Rel | Rel
+    Factor -> ( Bool ) | Array | Num | Bool_value | ! ( Bool )
+    HExpr -> HExpr HMath_op Factor | Factor
+	LExpr -> LExpr LMath_op HExpr | HExpr
+    Rel -> Rel Judge_op LExpr | LExpr
+	HRel -> HRel HLogic_op M Rel | Rel
+	b
+    Bool -> Bool LLogic_op M HRel | HRel
 
+
+#### 七、辅助
+
+	M -> ε 
+	N -> ε	
