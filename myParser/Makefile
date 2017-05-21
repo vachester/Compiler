@@ -10,7 +10,7 @@ Main.o : Main.cpp myParser.h
 myParser.o : myParser.cpp myParser.h grammer.txt action.out goto.out /root/C++/Compiler/test.txt
 	g++ -c myParser.cpp
 
-Lexer.o : /root/C++/Compiler/myLexer/myLexer.cpp
+myLexer.o : /root/C++/Compiler/myLexer/myLexer.cpp
 	g++ -c /root/C++/Compiler/myLexer/myLexer.cpp
 
 clean :

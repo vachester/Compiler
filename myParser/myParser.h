@@ -68,11 +68,11 @@ class Parser {
 		bool stack_parser(std::ifstream &in); 
 		void print(std::ofstream &out);
 		void run();
-		Symbol hasKey(std::string str);
-		void gen_code(std::string str);
-		void gen_math_code(std::vector<stack_node> p);
-		void backpatch(std::unordered_set<int> l, int addr);
-		std::unordered_set<int> merge(std::unordered_set<int> s1, std::unordered_set<int> s2);
+		Symbol hasKey(std::string str); //判断是否在符号表存在
+		void gen_code(std::string str);  //生成代码
+		void gen_math_code(std::vector<stack_node> p); //在数学运算的时候产生代码
+		void backpatch(std::unordered_set<int> l, int addr);  //回填
+		std::unordered_set<int> merge(std::unordered_set<int> s1, std::unordered_set<int> s2); //合并
 
 	private:
 		std::stack<stack_node> stk;
