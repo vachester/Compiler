@@ -77,7 +77,6 @@
 	LExpr -> LExpr LMath_op HExpr | HExpr
     Rel -> Rel Judge_op LExpr | LExpr
 	HRel -> HRel HLogic_op M Rel | Rel
-	b
     Bool -> Bool LLogic_op M HRel | HRel
 
 
